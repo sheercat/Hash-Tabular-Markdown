@@ -40,18 +40,10 @@ Tomoo Amano <sheercat@gmail.com>
 
 Hey! **The above document had some coding errors, which are explained below:**
 
-- Around line 110:
-
-    '=item' outside of any '=over'
-
-- Around line 114:
+- Around line 116:
 
     You forgot a '=back' before '=head1'
 
-- Around line 116:
-
-    '=item' outside of any '=over'
-
-- Around line 123:
+- Around line 127:
 
     You forgot a '=back' before '=head1'

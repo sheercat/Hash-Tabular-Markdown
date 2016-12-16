@@ -52,6 +52,17 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/sheercat/Hash-Tabular-Markdown/issues"
+      },
+      "homepage" : "https://github.com/sheercat/Hash-Tabular-Markdown",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/sheercat/Hash-Tabular-Markdown.git",
+         "web" : "https://github.com/sheercat/Hash-Tabular-Markdown"
+      }
+   },
    "version" : "0.01",
    "x_contributors" : [
       "Tomoo Amano <amano@diverse-inc.com>"

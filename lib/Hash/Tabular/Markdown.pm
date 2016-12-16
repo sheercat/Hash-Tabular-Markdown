@@ -107,11 +107,15 @@ Hash::Tabular::Markdown is dump hashref as markdown table format string.
 
 =head1 VALIABLES
 
+=over 4
+
 =item $Hash::Tabular::Markdown::Delimit
 
     delimit for markdown table
 
 =head1 METHODS
+
+=over 4
 
 =item tabulate
 
