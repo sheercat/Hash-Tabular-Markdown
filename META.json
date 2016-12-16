@@ -1,7 +1,7 @@
 {
    "abstract" : "It's new $module",
    "author" : [
-      "Tomoo Amano <amano@diverse-inc.com>"
+      "Tomoo Amano <sheercat@gmail.com>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v3.0.7, CPAN::Meta::Converter version 2.150005",
@@ -53,5 +53,8 @@
    },
    "release_status" : "unstable",
    "version" : "0.01",
+   "x_contributors" : [
+      "Tomoo Amano <amano@diverse-inc.com>"
+   ],
    "x_serialization_backend" : "JSON::PP version 2.27300"
 }

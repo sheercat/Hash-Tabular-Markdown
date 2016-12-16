@@ -30,7 +30,7 @@ sub tabulate {
 sub _to_md {
     my ($content) = @_;
 
-    my $dth = __hash_nest_depth( $content, 0 );
+    my $dth = _hash_nest_depth( $content, 0 );
     my $md;
     my $delimit = $Delimit;
     $md .= $delimit . $delimit x $dth . "\n";
@@ -42,7 +42,7 @@ sub _to_md {
     return $md;
 }
 
-sub __hash_nest_depth {
+sub _hash_nest_depth {
     my ( $content, $dth ) = @_;
 
     my $max = $dth;
@@ -50,7 +50,7 @@ sub __hash_nest_depth {
     $dth++;
     if ( ref($content) eq 'HASH' ) {
         foreach my $ky ( keys %$content ) {
-            my $new = __hash_nest_depth( $content->{$ky}, $dth );
+            my $new = _hash_nest_depth( $content->{$ky}, $dth );
             $max = $max < $new ? $new : $max;
         }
     }
