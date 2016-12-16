@@ -35,15 +35,3 @@ it under the same terms as Perl itself.
 # AUTHOR
 
 Tomoo Amano <sheercat@gmail.com>
-
-# POD ERRORS
-
-Hey! **The above document had some coding errors, which are explained below:**
-
-- Around line 116:
-
-    You forgot a '=back' before '=head1'
-
-- Around line 127:
-
-    You forgot a '=back' before '=head1'
