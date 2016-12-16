@@ -113,6 +113,8 @@ Hash::Tabular::Markdown is dump hashref as markdown table format string.
 
     delimit for markdown table
 
+=back
+
 =head1 METHODS
 
 =over 4
@@ -123,6 +125,8 @@ Hash::Tabular::Markdown is dump hashref as markdown table format string.
     my $md = Hash::Tabular::Markdown->tabulate($hashref);
 
 convert hashref to markdown table.
+
+=back
 
 =head1 LICENSE
 
