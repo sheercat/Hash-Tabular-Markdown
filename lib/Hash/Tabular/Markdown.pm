@@ -2,10 +2,91 @@ package Hash::Tabular::Markdown;
 use 5.008001;
 use strict;
 use warnings;
+use Data::Dumper;
 
 our $VERSION = "0.01";
 
+our $Delimit = "|";
 
+our $DataDumperFunciton = sub {
+    my ($value) = @_;
+    return $value unless (ref($value));
+    {
+        local $Data::Dumper::Terse  = 1;
+        local $Data::Dumper::Indent = 0;
+        return Data::Dumper::Dumper($value);
+    }
+};
+
+sub tabulate {
+    my ($class, $hashref) = @_;
+
+    return "require hash ref." unless ( ref($hashref) eq 'HASH' );
+
+    my $md = _to_md($hashref);
+    return $md;
+}
+
+sub _to_md {
+    my ($content) = @_;
+
+    my $dth = __hash_nest_depth( $content, 0 );
+    my $md;
+    my $delimit = $Delimit;
+    $md .= $delimit . $delimit x $dth . "\n";
+    $md .= $delimit . ":--$delimit" x $dth . "\n";
+    my $nest = [$delimit];
+    _to_table( $content, \$md, $nest );
+
+    # $md =~ s/\n\n+/\n/g;
+    return $md;
+}
+
+sub __hash_nest_depth {
+    my ( $content, $dth ) = @_;
+
+    my $max = $dth;
+    $max++;
+    $dth++;
+    if ( ref($content) eq 'HASH' ) {
+        foreach my $ky ( keys %$content ) {
+            my $new = __hash_nest_depth( $content->{$ky}, $dth );
+            $max = $max < $new ? $new : $max;
+        }
+    }
+    return $max;
+}
+
+sub _dump {
+    my ($content) = @_;
+    return $DataDumperFunciton->($content);
+}
+
+sub _to_table {
+    my ( $content, $md, $nest ) = @_;
+
+    my $lf;
+    if ( ref($content) eq 'HASH' && keys(%$content)) {
+        foreach my $ky ( keys %$content ) {
+            if ($lf) {
+                $$md .= join( '', @$nest ) . _dump($ky);
+                $lf = undef;
+            }
+            else {
+                $$md .= $nest->[0] . _dump($ky);
+            }
+            push @$nest, $nest->[0];
+            $lf = _to_table( $content->{$ky}, $md, $nest );
+            pop @$nest;
+        }
+    }
+    else {
+        $$md .= "|" . _dump($content);
+        $$md .= "\n";
+        return 1;
+    }
+    return $lf;
+}
 
 1;
 __END__
@@ -22,7 +103,22 @@ Hash::Tabular::Markdown - It's new $module
 
 =head1 DESCRIPTION
 
-Hash::Tabular::Markdown is ...
+Hash::Tabular::Markdown is dump hashref as markdown table format string.
+
+=head1 VALIABLES
+
+=item $Hash::Tabular::Markdown::Delimit
+
+    delimit for markdown table
+
+=head1 METHODS
+
+=item tabulate
+
+    my $hashref = { 1 => 2 };
+    my $md = Hash::Tabular::Markdown->tabulate($hashref);
+
+convert hashref to markdown table.
 
 =head1 LICENSE
 
@@ -33,7 +129,7 @@ it under the same terms as Perl itself.
 
 =head1 AUTHOR
 
-Tomoo Amano E<lt>amano@diverse-inc.comE<gt>
+Tomoo Amano E<lt>sheercat@gmail.comE<gt>
 
 =cut
 
