@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Tabulate hashref to markdown table format.",
    "author" : [
       "Tomoo Amano <sheercat@gmail.com>"
    ],
@@ -63,7 +63,7 @@
          "web" : "https://github.com/sheercat/Hash-Tabular-Markdown"
       }
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "x_contributors" : [
       "Tomoo Amano <amano@diverse-inc.com>"
    ],

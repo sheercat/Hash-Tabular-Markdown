@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Data::Dumper;
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 our $Delimit = "|";
 
@@ -95,7 +95,7 @@ __END__
 
 =head1 NAME
 
-Hash::Tabular::Markdown - It's new $module
+Hash::Tabular::Markdown - Tabulate hashref to markdown table format.
 
 =head1 SYNOPSIS
 

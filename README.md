@@ -1,6 +1,6 @@
 # NAME
 
-Hash::Tabular::Markdown - It's new $module
+Hash::Tabular::Markdown - Tabulate hashref to markdown table format.
 
 # SYNOPSIS
 
